@@ -1,4 +1,5 @@
 import { HTTPMethods, RouteCallback } from "./types";
+import { getPath } from "./utils/getPath";
 
 class Router {
 	routeMap: Map<string, RouteCallback>;
@@ -57,7 +58,7 @@ class Router {
 
 	serve(req: Request) {
 		const method = req.method as HTTPMethods;
-		const methodPath = req.url.replace("http://localhost:3000", "");
+		const methodPath = getPath(req.url);
 		const methodKey = this.#generateMethodKey(method, methodPath);
 
 		if (this.routeMap.has(methodKey)) {
@@ -68,8 +69,5 @@ class Router {
 		return new Response("Not Found", { status: 404 });
 	}
 }
-
-const router = new Router();
-router.get("/", (req) => {console.log("hello")});
 
 export default Router;

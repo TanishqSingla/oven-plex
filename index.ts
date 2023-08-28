@@ -1,5 +1,4 @@
 import { HTTPMethods, RouteCallback } from "./types";
-import { getPath } from "./utils/getPath";
 
 class Router {
 	routeMap: Map<string, RouteCallback>;
@@ -58,7 +57,7 @@ class Router {
 
 	serve(req: Request) {
 		const method = req.method as HTTPMethods;
-		const methodPath = getPath(req.url);
+		const methodPath = new URL(req.url).pathname;
 		const methodKey = this.#generateMethodKey(method, methodPath);
 
 		if (this.routeMap.has(methodKey)) {

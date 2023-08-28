@@ -1,10 +1,14 @@
 {
-	"name": "oven-plex",
+	"name": "oven-router",
 	"module": "index.ts",
 	"version": "0.0.1",
 	"type": "module",
 	"devDependencies": {
 		"bun-types": "latest"
+	},
+	"license": {
+		"type": "MIT",
+		"url": "https://www.opensource.org/licenses/mit-license.php"
 	},
 	"peerDependencies": {
 		"typescript": "^5.0.0"
